@@ -1,6 +1,6 @@
-Copyright 2012 Georgia Tech Research Institute
+Copyright 2013 Lance Gatlin
 
-Author: Lance Gatlin [lance.gatlin@gtri.gatech.edu]
+Author: Lance Gatlin [lance.gatlin@gmail.com]
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,10 +15,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	
-Puppet modules for configuring a basic single-website CentOS webserver. (apache module can be configured to support multi-site
- webservers)
-* See wiki ([here](https://github.com/gtri-iead/puppet-centos-webserver/wiki/Create-a-CentOS-VirtualBox-VM)) for instructions on creating a CentOS 6.X VirtualBox VM
-
 <h5>Install Puppet for Centos 6.X</h5>
 * For puppet packages, install the EPEL repo:
 * i386:
@@ -46,7 +42,7 @@ yum install git
 * Check-out puppet modules:
 
 <code lang="text">
-git clone https://github.com/gtri-iead/puppet-centos-webserver.git /usr/share/puppet/modules/
+git clone <gitrepo> /usr/share/puppet/modules/
 </code>
 * Edit ~/site.pp to the following:
 

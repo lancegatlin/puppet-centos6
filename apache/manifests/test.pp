@@ -1,7 +1,7 @@
 /*
-    Copyright 2012 Georgia Tech Research Institute
+    Copyright 2013 Lance Gatlin
 
-    Author: Lance Gatlin [lance.gatlin@gtri.gatech.edu]
+    Author: Lance Gatlin [lance.gatlin@gmail.com]
 	
     This file is part of puppet-centos-webserver.
 
@@ -20,20 +20,48 @@
 
 */
 
-define apache::test($modinf, $r_vhost) {
+define apache::alias(
+  $ensure,
+  $r_vhost = undef,
+  $aliasURL,
+  $destpath
+) {
 
   include apache::params
 
-  $module = $modinf[name]
-  $vhost = $r_vhost[name]
-  $testURL = $r_vhost[baseURL]
-  
-  $CURL = $params::CURL
-  
-  ppext::exec { "${module}::test_vhost_$vhost" :
-    modinf => $modinf,
-    command => "$CURL --silent --show-error --head $testURL",
-    expected_outregex => "Server: Apache/[0-9]+\\.[0-9]+\\.[0-9]+ \\(.+\\)",
-    require => Class['apache::init_service'],
+  # START PATTERN file_defaults
+  $dirEnsure = $ensure ? { default => directory, absent => absent }
+  $fileEnsure = $ensure ? { default => present, absent => absent }
+
+  File {
+    force => true,
+    ensure => $fileEnsure,
+    owner => root,
+    group => root,
+    mode => 644,
   }
+  #END PATTERN
+
+  $conftype = 'alias'
+
+  #START PATTERN apache_conffile
+  if $r_vhost {
+    $vhost_confpath = $r_vhost[confpath]
+    $conffile = "$vhost_confpath/$name.$conftype.conf"
+    File[$vhost_confpath] -> File[$conffile]
+  } else {
+    $conffile = "$apache::params::conf_d_path/$name.$conftype.conf"
+  }
+
+  file { $conffile:
+   content => template("apache/$conftype.conf.erb"),
+  }
+  if $ensure != absent {
+    Class['apache::config_files'] -> File[$conffile] ~> Class['apache::init_service']
+  } else {
+    #TODO: puppet bug below see vhost.pp
+    #Class['apache::config_files'] <- File[$conffile]
+    File[$conffile] ~> Class['apache::init_service']
+  }
+  #END PATTERN
 }

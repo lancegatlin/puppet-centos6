@@ -1,7 +1,7 @@
 /*
-    Copyright 2012 Georgia Tech Research Institute
+    Copyright 2013 Lance Gatlin
 
-    Author: Lance Gatlin [lance.gatlin@gtri.gatech.edu]
+    Author: Lance Gatlin [lance.gatlin@gmail.com]
 	
     This file is part of puppet-centos-webserver.
 
