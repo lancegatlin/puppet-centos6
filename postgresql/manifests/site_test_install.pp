@@ -23,7 +23,7 @@
 node default {
   include bash, ppext
 
-  $password = file("/etc/puppet/passwords/$hostname.pwd")
+  $password = file("/etc/puppet/passwords/$fqdn.pwd")
   
   class { 'postgresql' :
     ensure => latest,

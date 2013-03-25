@@ -32,8 +32,8 @@ class mysql::init_database($modinf, $rootUserPassword) {
   }
   ->*/
 
-  $drop_remote_root_user_sql = $hostname ? {
-    default => "DROP USER 'root'@'$hostname';",
+  $drop_remote_root_user_sql = $fqdn ? {
+    default => "DROP USER 'root'@'$fqdn';",
     'localhost' => '', # Don't drop root@localhost !
   }
   
@@ -42,7 +42,7 @@ class mysql::init_database($modinf, $rootUserPassword) {
   ppext::execonce { 'mysql::init_database' :
     modinf => $modinf,
     input => $initsql,
-    command => "$MYSQL -uroot",
+    command => "$MYSQL -f -uroot",
     expected_outregex => template("mysql/initialize.expected.regex.erb"),
    }
 

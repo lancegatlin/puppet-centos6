@@ -96,7 +96,7 @@ class webserver1(
   wwwadmin { 'webserver':
     versions => {
       phpmyadmin => '3.4.9',
-      phppgadmin => '5.0.3',
+      phppgadmin => '5.0.4',
     },
     # Install to /var/www/html/admin regardless of multihost status
     # wwwadmin ensures the admin directory is only accessible by ssh tunnel to localhost

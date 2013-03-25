@@ -24,7 +24,7 @@ node default {
 
   include bash,ppext,ppdb
 
-  $password = file("/etc/puppet/passwords/$hostname.pwd")
+  $password = file("/etc/puppet/passwords/$fqdn.pwd")
   
   class { 'apache' :
     version => '2.2*',

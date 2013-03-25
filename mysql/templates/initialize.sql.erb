@@ -1,6 +1,6 @@
 USE mysql;
 -- Remove remote root user
-DROP USER 'root'@'<%= hostname %>';
+DROP USER 'root'@'<%= fqdn %>';
 -- Set root password
 UPDATE user SET password = password('<%= rootUserPassword %>') WHERE user='root';
 -- Remove anonymous users

@@ -24,7 +24,7 @@ node default {
   include bash,ppext,ppdb
 
   $ensure = installed
-  $password = file("/etc/puppet/passwords/$hostname.pwd")
+  $password = file("/etc/puppet/passwords/$fqdn.pwd")
   
   class { 'backup' :
     dailyBackupCount => 3,
@@ -64,13 +64,13 @@ node default {
     ensure => latest,
   }
 
-  apache::alias { $hostname:
+  apache::alias { $fqdn:
     ensure => $ensure,
     aliasURL => '/wiki',
     destpath => '/var/www/html/w/index.php',
   }
   ->
-  mediawiki { $hostname :
+  mediawiki { $fqdn :
     version => '1.16.5',
     ensure => $ensure,
     destpath => '/var/www/html',

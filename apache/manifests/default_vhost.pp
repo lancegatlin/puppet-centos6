@@ -20,7 +20,7 @@
 
 */
 
-class apache::default_vhost(
+/*class apache::default_vhost(
   $ensure,
   $serverName,
   $adminEmail,
@@ -28,8 +28,8 @@ class apache::default_vhost(
   $dirOptions = '-Indexes FollowSymLinks',
   $dirAllowFrom = 'all'
 ) {
-
-  apache::vhost { 'default' :
+*/
+/*  apache::vhost { 'default' :
     ensure => $ensure,
     port => 80,
     adminEmail => $adminEmail,
@@ -38,7 +38,17 @@ class apache::default_vhost(
     aliases => $aliases,
     useDefaultLogs => true,
   }
-
+*/
+/*  apache::vhost { 'default' :
+    ensure => $ensure,
+    port => 80,
+    adminEmail => $adminEmail,
+    path => '/var/www',
+    serverName => 'localhost',
+    aliases => undef,
+    useDefaultLogs => true,
+  }
+       
   apache::directory { 'default':
     ensure => $ensure,
     vhost => 'default',
@@ -48,3 +58,4 @@ class apache::default_vhost(
   }
             
 }
+*/

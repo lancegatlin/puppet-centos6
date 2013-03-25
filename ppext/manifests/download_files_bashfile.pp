@@ -46,7 +46,7 @@ define ppext::download_files_bashfile(
     command => [
       "$ECHO 'Downloading $downloadURL to $destpath'",
       # Follow location hints (--location) in the case of forwarding
-      "$CURL --location --silent --show-error $downloadURL | $TAR zx --directory=$destpath",
+      "$CURL --location --silent --show-error '$downloadURL' | $TAR zx --directory=$destpath",
       "$ECHO 'Unpacking $destpath/$unpackDir'",
       "$MV $destpath/$unpackDir/* $destpath",
       "$ECHO 'Fixing file permissions in $destpath'",

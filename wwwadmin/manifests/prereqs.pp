@@ -30,6 +30,6 @@ define wwwadmin::prereqs($modinf) {
     
   } else {
     #Class['apache'] <- Wwwadmin::Prereqs[$name] ~> Service['apache']
-    Class['wwwadmin::uninstall'] ~> Class['apache::init_service']
+#    Class['wwwadmin::uninstall'] ~> Class['apache::init_service']
   }
 }

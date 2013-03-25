@@ -71,7 +71,8 @@ class apache(
     $r_vhost = $r_defaultvhost
   } else {
     # If multi-host, use default vhost as a private admin area
-    $hname = $multiHost ? { true => 'localhost', false => $hostname }
+    $hname = $multiHost ? { true => 'localhost', false => $fqdn }
+
     $r_vhost = {
       name => 'default',
       ensure => $ensure,

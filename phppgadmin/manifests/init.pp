@@ -47,8 +47,10 @@ define phppgadmin($version, $ensure, $destpath, $testURL) {
     config_inc_phpfile => "$destpath/conf/config.inc.php",
   }
   $unpackDir = "phpPgAdmin-$version"
-  $downloadURL = "http://sourceforge.net/projects/phppgadmin/files/phpPgAdmin%20%5Bstable%5D/phpPgAdmin-${majorVersion}.${minorVersion}/phpPgAdmin-${version}.tar.gz/download"
-
+/*  $downloadURL = "http://sourceforge.net/projects/phppgadmin/files/phpPgAdmin%20%5Bstable%5D/phpPgAdmin-${majorVersion}.${minorVersion}/phpPgAdmin-${version}.tar.gz/download"
+*/
+  $downloadURL = "http://downloads.sourceforge.net/project/phppgadmin/phpPgAdmin%20%5Bstable%5D/phpPgAdmin-${majorVersion}.${minorVersion}/phpPgAdmin-${version}.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fphppgadmin%2Ffiles%2F&ts=1364184430&use_mirror=iweb"
+  
   phppgadmin::validate_params { $name: modinf => $modinf }
 
   if $ensure != absent {
