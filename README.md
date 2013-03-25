@@ -60,7 +60,9 @@ node default {
 <code lang="text">
 yum clean all
 </code>
+
 * Update
+
 <code lang="text">
 yum update
 </code>
