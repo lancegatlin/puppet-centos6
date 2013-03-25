@@ -42,7 +42,7 @@ yum install git
 * Check-out puppet modules:
 
 <code lang="text">
-git clone <gitrepo> /usr/share/puppet/modules/
+git clone https://github.com/lancegatlin/puppet-centos6.git /usr/share/puppet/modules/
 </code>
 * Edit ~/site.pp to the following:
 
